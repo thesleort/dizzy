@@ -37,6 +37,10 @@ void dizzy::add_camera(float position_x, float position_y, float direction) {
     m_field.cameras.push_back(cam);
 }
 
+void dizzy::update_norms() {
+    
+}
+
 float dizzy::normalize_coord(float total_size, float input) {
     return (total_size - input) / input;
 }
