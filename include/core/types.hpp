@@ -1,6 +1,10 @@
 #ifndef __TYPES_HPP
 #define __TYPES_HPP
 
+#include <vector>
+
+// namespace dizzy
+
 struct microphone {
     unsigned id;
 
@@ -40,5 +44,21 @@ struct field {
     std::vector<camera*> cameras;
     // std::vector<recorder> recorders;
 };
+
+struct sound {
+    unsigned id;
+    float volume;
+    float delay;
+};
+
+struct sound_levels {
+    std::vector<sound> mic_levels;
+};
+
+struct relative_position {
+    float distance;
+    float direction;
+};
+
 
 #endif
