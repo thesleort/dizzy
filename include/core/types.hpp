@@ -9,8 +9,8 @@ struct microphone {
     unsigned id;
 
     // Coordinates
-    int position_x;
-    int position_y;
+    float position_x;
+    float position_y;
     // Normalized coordinates
     float nposition_x;
     float nposition_y;
@@ -20,8 +20,8 @@ struct camera {
     unsigned id;
 
     // Coordinates
-    int position_x;
-    int position_y;
+    float position_x;
+    float position_y;
     // Normalized coordinates
     float nposition_x;
     float nposition_y;
@@ -46,13 +46,16 @@ struct field {
 };
 
 struct sound {
-    unsigned id;
+    microphone *mic;
     float volume;
-    float delay;
+    float delay;    // Milliseconds
+    float zoom;     // Future implementation
+    float distance;
 };
 
 struct sound_levels {
     std::vector<sound> mic_levels;
+    float max_delay;
 };
 
 struct relative_position {
