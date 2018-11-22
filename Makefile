@@ -4,6 +4,7 @@ EXE = dizzy.out
 SRC_DIR = src
 OBJ_DIR = build
 INC_DIR = include
+LIB_DIR = lib
 
 PKG = gtk+-3.0 gstreamer-1.0 gstreamer-video-1.0
 
@@ -19,7 +20,7 @@ LDLIBS += -lm
 
 SRC = $(wildcard $(SRC_DIR)/*.cpp \
 		$(SRC_DIR)/*/*.cpp)
-INC		= -I$(INC_DIR)/
+INC		= -I$(INC_DIR)/ -I$(LIB_DIR)/
 OBJROOT = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 OBJ 	= $(OBJROOT:$(SRC_DIR)/*/%.cpp=$(OBJ_DIR)/*/%.o)
 

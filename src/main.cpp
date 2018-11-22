@@ -5,14 +5,15 @@
 #include "core/core.hpp"
 #include "core/setup.hpp"
 
+
+
 int main(int argc, char *argv[]) {
 
     std::cout << "Dizzy sound\n";
 
-    setup cfg(1,1);
+    dizzy::setup cfg(1,1);
+    
 
-    
-    
     // std::cout << dissy.get_length_x();
 
 

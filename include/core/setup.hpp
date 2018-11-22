@@ -2,14 +2,15 @@
 #define __SETUP_HPP
 
 #include <vector>
-#include "core/types.hpp"
+#include "types.hpp"
 #include "core/dizzy.hpp"
 
+namespace dizzy {
 class setup  {
 public:
     setup(float length, float width);
-    void add_microphone(float position_x, float position_y);
-    void add_camera(float position_x, float position_y, float direction);
+    void add_microphone(float position_x, float position_y, float position_z);
+    void add_camera(float position_x, float position_y, float position_z, float direction);
 
     // Setter functions
     void set_length_x(float length);
@@ -29,5 +30,6 @@ private:
     float normalize_direction(float direction);
     field *m_field;
 };
+}
 
 #endif

@@ -4,6 +4,14 @@
 #include <vector>
 
 // namespace dizzy
+enum signal_type {
+    W, X, Y, Z
+};
+
+struct signal {
+    signal_type source_signal;
+    float signal;
+};
 
 struct microphone {
     unsigned id;
@@ -11,9 +19,14 @@ struct microphone {
     // Coordinates
     float position_x;
     float position_y;
+    float position_z; //height
+
     // Normalized coordinates
     float nposition_x;
     float nposition_y;
+    float nposition_z;
+
+    std::vector<signal> sources;
 };
 
 struct camera {
@@ -22,9 +35,11 @@ struct camera {
     // Coordinates
     float position_x;
     float position_y;
+    float position_z; //height
     // Normalized coordinates
     float nposition_x;
     float nposition_y;
+    float nposition_z;
 
     float direction;
     // Normalized direction
@@ -39,7 +54,8 @@ union recorder {
 struct field {
     float length_x;
     float length_y;
-
+    float height; 
+    
     std::vector<microphone*> microphones;
     std::vector<camera*> cameras;
     // std::vector<recorder> recorders;

@@ -1,8 +1,9 @@
 #include <cmath>
 
 #include "core/core.hpp"
+#include "ambisonic/ambisonic.hpp"
 
-core::core(field &fld, camera &cam) {
+dizzy::Core::Core(field &fld, camera &cam) {
     m_field = &fld;
     m_cam = &cam;
 
@@ -20,30 +21,35 @@ core::core(field &fld, camera &cam) {
  * @param direction 
  * @return sound_levels* 
  */
-sound_levels *core::get_stereo(float direction) {
-    sound closest_right;
-    sound closest_left;
-    sound third_closest_opposite;
-
+sound_levels *dizzy::Core::get_stereo(float direction) {
+    
     for (unsigned i = 0; i < m_sound_levels.mic_levels[i].mic->position_x; ++i) {
         // if()
     }
 }
 
-sound_levels *core::get_stereo(float x, float y) {
+/**
+ * @brief 
+ * 
+ * @param x position
+ * @param y position
+ * @return sound_levels* 
+ */
+sound_levels *dizzy::Core::get_stereo(float x, float y) {
+    // TODO: 
 }
 
-sound_levels *core::get_surround(float direction) {
+sound_levels *dizzy::Core::get_surround(float direction) {
 }
 
-sound_levels *core::get_surround(float x, float y) {
+sound_levels *dizzy::Core::get_surround(float x, float y) {
 }
 
-void core::set_temperature(float celcius) {
+void dizzy::Core::set_temperature(float celcius) {
     m_temperature = celcius;
 }
 
-float core::current_speed_of_sound(void) {
+float dizzy::Core::current_speed_of_sound(void) {
     float speed;
 
     speed = 331.3 * std::sqrt(1 + (m_temperature / 273.15));
@@ -53,7 +59,7 @@ float core::current_speed_of_sound(void) {
     return speed;
 }
 
-float core::calculate_delay(microphone &mic) {
+float dizzy::Core::calculate_delay(microphone &mic) {
     float delay = 0;
     float distance = calculate_distance(mic);
 
@@ -65,8 +71,8 @@ float core::calculate_delay(microphone &mic) {
     return delay;
 }
 
-float core::calculate_distance(microphone &mic) {
-    float distance = calculate_distance(mic.position_x, mic.position_y);
+float dizzy::Core::calculate_distance(microphone &mic) {
+    float distance = calculate_distance(mic.position_x, mic.position_y, mic.position_z);
 
     for (unsigned i = 0; i < m_sound_levels.mic_levels.size(); ++i) {
         if (m_sound_levels.mic_levels[i].mic == &mic) {
@@ -76,12 +82,13 @@ float core::calculate_distance(microphone &mic) {
     return distance;
 }
 
-float core::calculate_distance(float x, float y) {
+float dizzy::Core::calculate_distance(float x, float y, float z) {
     float distance = 0;
 
     distance = std::sqrt(
         std::pow((x - (m_cam->position_x)), 2) +
-        std::pow((y - (m_cam->position_y)), 2));
+        std::pow((y - (m_cam->position_y)), 2) + 
+        std::pow((z - (m_cam->position_z)), 2));
 
     return distance;
 }
