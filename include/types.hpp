@@ -4,16 +4,37 @@
 #include <vector>
 
 // namespace dizzy
-enum signal_type {
+enum Signal_type {
     W, X, Y, Z
 };
 
-struct signal {
-    signal_type source_signal;
+enum Source {
+    MONO,
+    STEREO,
+    SURROUND50,
+    SURROUND51,
+    SURROUND70,
+    SURROUND71
+};
+
+enum Placement {
+    ROOF, 
+    GOAL, 
+    PENALTY_HOME, 
+    PENALTY_AWAY, 
+    REFEREE,
+    BENCH_HOME,
+    BENCH_AWAY,
+    COACH_HOME,
+    COACH_AWAY
+};
+
+struct Signal {
+    Signal_type source_signal;
     float signal;
 };
 
-struct microphone {
+struct Microphone {
     unsigned id;
 
     // Coordinates
@@ -26,10 +47,17 @@ struct microphone {
     float nposition_y;
     float nposition_z;
 
-    std::vector<signal> sources;
+    Placement placement;
+
+    Source source;
+
+    std::vector<Sound> sources;
+
+    // std::vector<Signal> sources;
+    float max_delay;
 };
 
-struct camera {
+struct Camera {
     unsigned id;
 
     // Coordinates
@@ -46,38 +74,37 @@ struct camera {
     float ndirection;
 };
 
-union recorder {
-    microphone mic;
-    camera cam;
+union Recorder {
+    Microphone mic;
+    Camera cam;
 };
 
-struct field {
+struct Field {
     float length_x;
     float length_y;
     float height; 
     
-    std::vector<microphone*> microphones;
-    std::vector<camera*> cameras;
+    std::vector<Microphone*> microphones;
+    std::vector<Camera*> cameras;
     // std::vector<recorder> recorders;
 };
 
-struct sound {
-    microphone *mic;
+struct Sound {
     float volume;
     float delay;    // Milliseconds
     float zoom;     // Future implementation
-    float distance;
+    float distance; // Distance to camera
 };
 
-struct sound_levels {
-    std::vector<sound> mic_levels;
+struct Sound_levels {
+    std::vector<Sound> mic_levels;
     float max_delay;
 };
 
-struct relative_position {
-    float distance;
-    float direction;
-};
+// struct Relative_position {
+//     float distance;
+//     float direction;
+// };
 
 
 #endif

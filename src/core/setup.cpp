@@ -8,12 +8,14 @@ dizzy::setup::setup(float length, float width) {
     m_field->length_y = width;
 }
 
-void dizzy::setup::add_microphone(float position_x, float position_y, float position_z) {
+void dizzy::setup::add_microphone(float position_x, float position_y, float position_z, placement place) {
     microphone *mic = (microphone *)malloc(sizeof(microphone));
 
     mic->position_x = position_x;
     mic->position_y = position_y;
     mic->position_z = position_y;
+
+    mic->m_placement = place;
 
     mic->nposition_x = normalize_coord(m_field->length_x ,position_x);
     mic->nposition_y = normalize_coord(m_field->length_x ,position_y);

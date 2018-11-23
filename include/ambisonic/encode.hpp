@@ -1,8 +1,10 @@
 #ifndef __AMBISONIC_ENCODE_HPP
 #define __AMBISONIC_ENCODE_HPP
 
-#include "ambisonic.hpp"
 #include <iostream>
+
+#include "ambisonic/ambisonic.hpp"
+#include "types.hpp"
 
 namespace dizzy {
 namespace ambisonic {

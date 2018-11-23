@@ -6,6 +6,8 @@
 #include "core/setup.hpp"
 
 
+// #include "Hoa/Hoa.hpp"
+
 
 int main(int argc, char *argv[]) {
 
@@ -17,7 +19,9 @@ int main(int argc, char *argv[]) {
     // std::cout << dissy.get_length_x();
 
 
-    
+    // hoa::Encoder<hoa::Hoa2d, float> encoder(0);
+
+    // encoder.
     // core.setup();
     // core.setup(1,1);
     //    core.setup

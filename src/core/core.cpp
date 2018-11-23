@@ -3,12 +3,12 @@
 #include "core/core.hpp"
 #include "ambisonic/ambisonic.hpp"
 
-dizzy::Core::Core(field &fld, camera &cam) {
+dizzy::Core::Core(Field &fld, Camera &cam) {
     m_field = &fld;
     m_cam = &cam;
 
     for (unsigned i = 0; i < m_field->microphones.size(); ++i) {
-        sound s;
+        Sound s;
         s.mic = m_field->microphones[i];
         m_sound_levels.mic_levels.push_back(s);
     }
@@ -21,7 +21,7 @@ dizzy::Core::Core(field &fld, camera &cam) {
  * @param direction 
  * @return sound_levels* 
  */
-sound_levels *dizzy::Core::get_stereo(float direction) {
+Sound_levels *dizzy::Core::get_stereo(float direction) {
     
     for (unsigned i = 0; i < m_sound_levels.mic_levels[i].mic->position_x; ++i) {
         // if()
@@ -35,14 +35,14 @@ sound_levels *dizzy::Core::get_stereo(float direction) {
  * @param y position
  * @return sound_levels* 
  */
-sound_levels *dizzy::Core::get_stereo(float x, float y) {
+Sound_levels *dizzy::Core::get_stereo(float x, float y) {
     // TODO: 
 }
 
-sound_levels *dizzy::Core::get_surround(float direction) {
+Sound_levels *dizzy::Core::get_surround(float direction) {
 }
 
-sound_levels *dizzy::Core::get_surround(float x, float y) {
+Sound_levels *dizzy::Core::get_surround(float x, float y) {
 }
 
 void dizzy::Core::set_temperature(float celcius) {
@@ -59,7 +59,7 @@ float dizzy::Core::current_speed_of_sound(void) {
     return speed;
 }
 
-float dizzy::Core::calculate_delay(microphone &mic) {
+float dizzy::Core::calculate_delay(Microphone &mic) {
     float delay = 0;
     float distance = calculate_distance(mic);
 
@@ -71,7 +71,7 @@ float dizzy::Core::calculate_delay(microphone &mic) {
     return delay;
 }
 
-float dizzy::Core::calculate_distance(microphone &mic) {
+float dizzy::Core::calculate_distance(Microphone &mic) {
     float distance = calculate_distance(mic.position_x, mic.position_y, mic.position_z);
 
     for (unsigned i = 0; i < m_sound_levels.mic_levels.size(); ++i) {

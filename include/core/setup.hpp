@@ -9,7 +9,7 @@ namespace dizzy {
 class setup  {
 public:
     setup(float length, float width);
-    void add_microphone(float position_x, float position_y, float position_z);
+    void add_microphone(float position_x, float position_y, float position_z, Placement place);
     void add_camera(float position_x, float position_y, float position_z, float direction);
 
     // Setter functions

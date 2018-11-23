@@ -4,13 +4,17 @@
 #include "ambisonic.hpp"
 #include "types.hpp"
 
+#include <vector>
+
 namespace dizzy {
 namespace ambisonic {
 class Decode {
 public:
     Decode(microphone &mic);
 
-private:
+    void process(std::vector<float> *output);
+
+protected:
     microphone *m_mic;
 };
 } // namespace ambisonic
