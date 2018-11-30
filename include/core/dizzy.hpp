@@ -14,9 +14,9 @@ public:
 protected:
     float m_xlength;
     float m_ylength;
-    std::vector<microphone *> m_microphones;
-    std::vector<camera *> m_cameras;
-    field m_field;
+    std::vector<Microphone *> m_microphones;
+    std::vector<Camera *> m_cameras;
+    Field m_field;
 };
 } // namespace dizzy
 

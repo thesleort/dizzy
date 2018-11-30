@@ -8,7 +8,7 @@ namespace dizzy {
 namespace ambisonic {
 class UHJDecode : public dizzy::ambisonic::Decode {
     public:
-        UHJDecode(microphone &mic);
+        UHJDecode(Microphone &mic);
         void process();
 };
 } // namespace ambisonic

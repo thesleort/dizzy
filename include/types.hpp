@@ -34,6 +34,14 @@ struct Signal {
     float signal;
 };
 
+struct Sound {
+    float volume;
+    float delay;    // Milliseconds
+    float zoom;     // Future implementation
+    float distance; // Distance to camera
+    Signal signal;
+};
+
 struct Microphone {
     unsigned id;
 
@@ -87,13 +95,6 @@ struct Field {
     std::vector<Microphone*> microphones;
     std::vector<Camera*> cameras;
     // std::vector<recorder> recorders;
-};
-
-struct Sound {
-    float volume;
-    float delay;    // Milliseconds
-    float zoom;     // Future implementation
-    float distance; // Distance to camera
 };
 
 struct Sound_levels {

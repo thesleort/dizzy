@@ -3,11 +3,13 @@
 
 #include "types.hpp"
 
+#include <vector>
+
 
 namespace dizzy {
     class Events {
-        Events(std::vector)
-    }
+        Events(std::vector<Microphone> *microphones);
+    };
 }
 
 #endif

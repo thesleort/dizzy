@@ -5,7 +5,7 @@
 
 class analyzer {
 public:
-    analyzer(dizzy &config, camera &cam);
+    // analyzer(dizzy &config, Camera &cam);
 
     // void get
 

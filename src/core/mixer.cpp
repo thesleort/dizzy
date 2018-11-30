@@ -1,6 +1,6 @@
 #include "core/mixer.hpp"
 
-dizzy::Mixer::Mixer(field f) {
+dizzy::Mixer::Mixer(Field f) {
     m_field = f;
     channels = f.microphones.size();
 } 

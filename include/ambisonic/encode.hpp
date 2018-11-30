@@ -11,16 +11,16 @@ namespace ambisonic {
 
 class Encode {
 public:
-    Encode(microphone &mic, unsigned order);
+    Encode(Microphone &mic, unsigned order);
 
     void set_coordinates(const float radius, const float azimuth, const float elevation);
     void set_radius(const float radius);
     void set_azimuth(const float azimuth);
     void set_elevation(const float elevation);
     
-    void enqueue_signals(std::vector<signal> signals);
+    void enqueue_signals(std::vector<Signal> signals);
 private:
-    microphone *m_mic;
+    Microphone *m_mic;
     unsigned m_order;
 
     float m_radius;

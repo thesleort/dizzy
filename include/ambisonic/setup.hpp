@@ -9,13 +9,13 @@ namespace ambisonic {
     class Setup {
 public:
     Setup(dimension dim);
-    void add_microphone(microphone &mic);
-    void add_signal(signal_type sig);
+    void add_microphone(Microphone &mic);
+    void add_signal(Signal_type sig);
 
 
 private:
     dimension m_dimension;
-    microphone *m_mic;
+    Microphone *m_mic;
 };
 }
 } // namespace dizzy

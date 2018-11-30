@@ -10,12 +10,12 @@ namespace dizzy {
 namespace ambisonic {
 class Decode {
 public:
-    Decode(microphone &mic);
+    Decode(Microphone &mic);
 
     void process(std::vector<float> *output);
 
 protected:
-    microphone *m_mic;
+    Microphone *m_microphone;
 };
 } // namespace ambisonic
 } // namespace dizzy

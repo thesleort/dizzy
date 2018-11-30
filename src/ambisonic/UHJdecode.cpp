@@ -1,5 +1,5 @@
 #include "ambisonic/UHJdecode.hpp"
 
-dizzy::ambisonic::UHJDecode::UHJDecode(microphone &mic) : Decode(mic) {
+dizzy::ambisonic::UHJDecode::UHJDecode(Microphone &mic) : Decode(mic) {
 }
 

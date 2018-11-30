@@ -4,7 +4,7 @@ dizzy::ambisonic::Setup::Setup(dimension dim) {
     m_dimension = dim;
 }
 
-void dizzy::ambisonic::Setup::add_microphone(microphone &mic) {
+void dizzy::ambisonic::Setup::add_microphone(Microphone &mic) {
     m_mic = &mic;
     add_signal(W);
     add_signal(X);
@@ -12,11 +12,12 @@ void dizzy::ambisonic::Setup::add_microphone(microphone &mic) {
     add_signal(Z);
 }
 
-void dizzy::ambisonic::Setup::add_signal(signal_type sig) {
+void dizzy::ambisonic::Setup::add_signal(Signal_type sig) {
 
+    // TODO:
     if (m_mic->sources.size() <= 4) {
-        signal s;
+        Signal s;
         s.source_signal = sig;
-        m_mic->sources.push_back(s);
+        // m_mic->sources.push_back(s);
     }
 }

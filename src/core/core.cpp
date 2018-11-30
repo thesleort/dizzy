@@ -9,8 +9,20 @@ dizzy::Core::Core(Field &fld, Camera &cam) {
 
     for (unsigned i = 0; i < m_field->microphones.size(); ++i) {
         Sound s;
-        s.mic = m_field->microphones[i];
         m_sound_levels.mic_levels.push_back(s);
+        switch (m_field->microphones[i]->source) {
+        case MONO:
+            m_field->microphones[i]->sources.push_back(s);
+            break;
+        case STEREO:
+            m_field->microphones[i]->sources.push_back(s);
+            m_field->microphones[i]->sources.push_back(s);
+            break;
+        default:
+            m_field->microphones[i]->sources.push_back(s);
+            m_field->microphones[i]->sources.push_back(s);
+            break;
+        }
     }
 }
 
@@ -22,10 +34,10 @@ dizzy::Core::Core(Field &fld, Camera &cam) {
  * @return sound_levels* 
  */
 Sound_levels *dizzy::Core::get_stereo(float direction) {
-    
-    for (unsigned i = 0; i < m_sound_levels.mic_levels[i].mic->position_x; ++i) {
-        // if()
-    }
+
+    // for (unsigned i = 0; i < m_sound_levels.mic_levels[i].mic->position_x; ++i) {
+    //     // if()
+    // }
 }
 
 /**
@@ -36,7 +48,7 @@ Sound_levels *dizzy::Core::get_stereo(float direction) {
  * @return sound_levels* 
  */
 Sound_levels *dizzy::Core::get_stereo(float x, float y) {
-    // TODO: 
+    // TODO:
 }
 
 Sound_levels *dizzy::Core::get_surround(float direction) {
@@ -74,10 +86,8 @@ float dizzy::Core::calculate_delay(Microphone &mic) {
 float dizzy::Core::calculate_distance(Microphone &mic) {
     float distance = calculate_distance(mic.position_x, mic.position_y, mic.position_z);
 
-    for (unsigned i = 0; i < m_sound_levels.mic_levels.size(); ++i) {
-        if (m_sound_levels.mic_levels[i].mic == &mic) {
-            m_sound_levels.mic_levels[i].distance = distance;
-        }
+    for (unsigned i = 0; i < mic.sources.size(); ++i) {
+        mic.sources[i].distance = distance;
     }
     return distance;
 }
@@ -87,7 +97,7 @@ float dizzy::Core::calculate_distance(float x, float y, float z) {
 
     distance = std::sqrt(
         std::pow((x - (m_cam->position_x)), 2) +
-        std::pow((y - (m_cam->position_y)), 2) + 
+        std::pow((y - (m_cam->position_y)), 2) +
         std::pow((z - (m_cam->position_z)), 2));
 
     return distance;

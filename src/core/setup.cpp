@@ -3,19 +3,19 @@
 #include "core/setup.hpp"
 
 dizzy::setup::setup(float length, float width) {
-    m_field = (field*)malloc(sizeof(field));
+    m_field = (Field*)malloc(sizeof(Field));
     m_field->length_x = length;
     m_field->length_y = width;
 }
 
-void dizzy::setup::add_microphone(float position_x, float position_y, float position_z, placement place) {
-    microphone *mic = (microphone *)malloc(sizeof(microphone));
+void dizzy::setup::add_microphone(float position_x, float position_y, float position_z, Placement place) {
+    Microphone *mic = (Microphone *)malloc(sizeof(Microphone));
 
     mic->position_x = position_x;
     mic->position_y = position_y;
     mic->position_z = position_y;
 
-    mic->m_placement = place;
+    mic->placement = place;
 
     mic->nposition_x = normalize_coord(m_field->length_x ,position_x);
     mic->nposition_y = normalize_coord(m_field->length_x ,position_y);
@@ -31,7 +31,7 @@ void dizzy::setup::add_camera(float position_x, float position_y, float position
         // update_norms();
         return;
     }
-    camera *cam = (camera*)malloc(sizeof(camera));
+    Camera *cam = (Camera*)malloc(sizeof(Camera));
 
     cam->position_x = position_x;
     cam->position_y = position_y;
@@ -71,6 +71,6 @@ float dizzy::setup::get_length_y() {
     return m_field->length_y;
 }
 
-field *dizzy::setup::get_config() {
+Field *dizzy::setup::get_config() {
     return m_field;
 }

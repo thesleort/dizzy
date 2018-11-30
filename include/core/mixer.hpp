@@ -7,12 +7,12 @@
 namespace dizzy {
     class Mixer {
         public:
-        Mixer(field f);
-        void set_microphone_volume(microphone &mic);
+        Mixer(Field f);
+        void set_microphone_volume(Microphone &mic);
 
-        float get_microphone_volume(microphone &mic);
+        float get_microphone_volume(Microphone &mic);
         private:
-            field m_field;
+            Field m_field;
             unsigned channels;
     };
 }
